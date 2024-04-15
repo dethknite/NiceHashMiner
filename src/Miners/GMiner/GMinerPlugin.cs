@@ -27,11 +27,11 @@ namespace MP.GMiner
             MinerBenchmarkTimeSettings = PluginInternalSettings.BenchmarkTimeSettings;
             MinersBinsUrlsSettings = new MinersBinsUrlsSettings
             {
-                BinVersion = "v3.43",
+                BinVersion = "v3.44",
                 ExePath = new List<string> { "", "miner.exe" },
                 Urls = new List<string>
                 {
-                    "https://github.com/develsoftware/GMinerRelease/releases/download/3.43/gminer_3_43_windows64.zip" // original
+                    "https://github.com/develsoftware/GMinerRelease/releases/download/3.44/gminer_3_44_windows64.zip" // original
                 }
             };
             PluginMetaInfo = new PluginMetaInfo
@@ -45,7 +45,7 @@ namespace MP.GMiner
 
         public override string Name => "GMiner";
 
-        public override Version Version => new Version(23, 0);
+        public override Version Version => new Version(23, 1);
 
 
         public override string Author => "info@nicehash.com";

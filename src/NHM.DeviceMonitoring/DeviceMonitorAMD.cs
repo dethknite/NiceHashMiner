@@ -56,7 +56,7 @@ namespace NHM.DeviceMonitoring
         {
             int percentage = 0;
             int ok = AMD_ODN.nhm_amd_device_get_fan_speed_percentage(BusID, ref percentage);
-            if (ok != 0) Logger.InfoDelayed(LogTag, $"nhm_amd_device_get_fan_speed_rpm failed with error code {ok}", _delayedLogging);
+            if (ok != 0) Logger.InfoDelayed(LogTag, $"nhm_amd_device_get_fan_speed_percentage failed with error code {ok}", _delayedLogging);
             return (ok, percentage);
         }
 

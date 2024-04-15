@@ -211,21 +211,28 @@ namespace NHM.DeviceDetection
                 stringBuilder.AppendLine($"\t\tNAME: {amdDev.Name}");
                 stringBuilder.AppendLine($"\t\tCodename: {amdDev.Codename}");
                 stringBuilder.AppendLine($"\t\tInfSection: {amdDev.InfSection}");
-                stringBuilder.AppendLine($"\t\tMEMORY: {amdDev.GpuRam}");
+                stringBuilder.AppendLine($"\t\tMEMORY: {amdDev.GpuRam}"); 
                 stringBuilder.AppendLine($"\t\tOpenCLPlatformID: {amdDev.OpenCLPlatformID}");
                 stringBuilder.AppendLine($"\t\tIsIntegrated: {amdDev.IsIntegrated}");
             }
             Logger.Info(Tag, stringBuilder.ToString());
         }
 
-        private static async Task DetectIntelGPUs()
+        private static async Task DetectIntelGPUs(bool detectIntegrated)
         {
             var intelDevices = await IntelGpuDetector.TryQueryIGCLDevicesAsync();
             var result = intelDevices.parsed;
             if (result?.IgclDevices?.Count > 0)
             {
                 // we got INTEL devices
-                var igclDevices = result.IgclDevices.Select(dev => IntelGpuDetector.Transform(dev)).ToList();
+                List<IntelDevice> igclDevices = new List<IntelDevice>();
+                if (detectIntegrated)
+                {
+                    igclDevices = result.IgclDevices
+                        .Where(dev => !dev.IsIntegrated)
+                        .Select(dev => IntelGpuDetector.Transform(dev)).ToList();
+                }
+                else igclDevices = result.IgclDevices.Select(dev => IntelGpuDetector.Transform(dev)).ToList();
                 // filter out no supported SM versions
 
                 DetectionResult.IntelDevices = igclDevices.OrderBy(igclDev => igclDev.PCIeBusID).ToList();
@@ -259,7 +266,7 @@ namespace NHM.DeviceDetection
             progress?.Report(DeviceDetectionStep.AMD_OpenCL);
             if (!Settings.FakeDevices) await DetectAMDDevices(detectIntegrated);
             progress?.Report(DeviceDetectionStep.INTEL_GPU);
-            if (!Settings.FakeDevices) await DetectIntelGPUs();
+            if (!Settings.FakeDevices) await DetectIntelGPUs(detectIntegrated);
             progress?.Report(DeviceDetectionStep.FAKE);
             if (Settings.FakeDevices) DetectFAKE_Devices();
             // after we detect AMD we will have platforms and now we can check if NVIDIA OpenCL backend works

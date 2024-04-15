@@ -66,10 +66,6 @@ namespace MP.GMiner
                     $"-a octopus -s stratum+tcp://{_urlPort} -u {_username} --api 127.0.0.1:{_apiPort} -d {_devices} --watchdog 0 {_extraLaunchParameters}"
                 },
                 {
-                    $"{AlgorithmType.IronFish}",
-                    $"-a ironfish -s stratum+tcp://{_urlPort} -u {_username} --api 127.0.0.1:{_apiPort} -d {_devices} --watchdog 0 {_extraLaunchParameters}"
-                },
-                {
                     $"{AlgorithmType.KarlsenHash}",
                     $"-a karlsen -s stratum+tcp://{_urlPort} -u {_username} --api 127.0.0.1:{_apiPort} -d {_devices} --watchdog 0 {_extraLaunchParameters}"
                 }
@@ -121,12 +117,8 @@ namespace MP.GMiner
                     $"-a octopus -s stratum+ssl://{_url}:443 -u {_username} --api 127.0.0.1:{_apiPort} -d {_devices} --watchdog 0 {_extraLaunchParameters}"
                 },
                 {
-                    $"{AlgorithmType.IronFish}",
-                    $"-a ironfish -s stratum+ssl://{_url}:443 -u {_username} --api 127.0.0.1:{_apiPort} -d {_devices} --watchdog 0 {_extraLaunchParameters}"
-                },
-                {
                     $"{AlgorithmType.KarlsenHash}",
-                    $"-a ironfish -s stratum+ssl://{_url}:443 -u {_username} --api 127.0.0.1:{_apiPort} -d {_devices} --watchdog 0 {_extraLaunchParameters}"
+                    $"-a karlsen -s stratum+ssl://{_url}:443 -u {_username} --api 127.0.0.1:{_apiPort} -d {_devices} --watchdog 0 {_extraLaunchParameters}"
                 }
             }
         };

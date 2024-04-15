@@ -14,6 +14,7 @@ using NHMCore.Configs.Data;
 using NHMCore.Configs.Managers;
 using NHMCore.Mining;
 using NHMCore.Mining.MiningStats;
+using NHMCore.Notifications;
 using NHMCore.Schedules;
 using NHMCore.Utils;
 using System;
@@ -241,7 +242,7 @@ namespace NHMCore.Nhmws.V4
                     DisplayGroup = 0,
                     DisplayName = "Miners settings",
                     DefaultValue = "",
-                    Range = (2048, ""),
+                    Range = (8092, ""),
                     ExecuteTask = async (object p) =>
                     {
                         if (p is not string prop) return -1;
@@ -319,37 +320,6 @@ namespace NHMCore.Nhmws.V4
             return result;
         }
 
-        private static readonly string _uuid_seed_multiple_instance = Paths.AppRootPath("_uuid_seed.json");
-        private static string GetUniqueAppendixIfNeeded()
-        {
-            string multipleInstanceAppendix()
-            {
-                return $"{Math.Round((DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalMilliseconds)}";
-            }
-            if (MiscSettings.Instance.AllowMultipleInstances)
-            {
-                if (!File.Exists(_uuid_seed_multiple_instance))
-                {
-                    try
-                    {
-                        using (StreamWriter writer = new StreamWriter(_uuid_seed_multiple_instance))
-                        {
-                            var uuidAppendix = $"{multipleInstanceAppendix()}+{Random.Shared.NextInt64(100)}";
-                            writer.Write(uuidAppendix);
-                        }
-                    }
-                    catch (Exception ex) { Logger.Error("ApplicationStateManager", ex.Message); }
-                }
-                try
-                {
-                    string fileContents = File.ReadAllText(_uuid_seed_multiple_instance);
-                    return $"+{fileContents}";
-                }
-                catch (Exception ex) { Logger.Error("ApplicationStateManager", ex.Message); }
-                return $"+{multipleInstanceAppendix()}+{Random.Shared.NextInt64(100)}";
-            }
-            return string.Empty;
-        }
 
         public static LoginMessage CreateLoginMessage(string btc, string worker, string rigID, IOrderedEnumerable<ComputeDevice> devices)
         {
@@ -376,7 +346,7 @@ namespace NHMCore.Nhmws.V4
             {
                 Btc = btc,
                 Worker = worker,
-                RigID = rigID + GetUniqueAppendixIfNeeded(),
+                RigID = rigID,
                 Version = new List<string> { $"NHM/{NHMApplication.ProductVersion}", Environment.OSVersion.ToString() },
                 OptionalMutableProperties = GetRigOptionalMutableValues(true).properties,
                 OptionalDynamicProperties = GetRigOptionalDynamicValues().properties,
@@ -817,6 +787,17 @@ namespace NHMCore.Nhmws.V4
             var json = JsonConvert.SerializeObject(miners);
             return json;
         }
+
+        private static int CheckOrCorrectDefaultValue(int min, int max, int def)
+        {
+            if (def > min && def < max) return def;
+            return (min + max) / 2;
+        }
+        private static bool AreLimitsWrong(int min, int max)
+        {
+            return max - min <= 20;
+        }
+
         private static string GetLimitsForDevice(ComputeDevice d)
         {
             //todo granulate
@@ -826,14 +807,9 @@ namespace NHMCore.Nhmws.V4
                 var lims = tdpLim.GetTDPLimits();
                 if (lims.ok)
                 {
-                    if(d.DeviceType == DeviceType.AMD)
-                    {
-                        limit.limits.Add(new Limit { Name = "Power Limit", Unit = "%", Def = lims.def, Range = ((int)lims.min, (int)lims.max) });
-                    }
-                    else
-                    {
-                        limit.limits.Add(new Limit { Name = "Power Limit", Unit = "W", Def = lims.def, Range = ((int)lims.min, (int)lims.max) });
-                    }
+                    string unit = d.DeviceType == DeviceType.AMD ? "%" : "W";
+                    int defVal = CheckOrCorrectDefaultValue(lims.min, lims.max, lims.def);
+                    limit.limits.Add(new Limit { Name = "Power Limit", Unit = unit, Def = defVal, Range = ((int)lims.min, (int)lims.max) });
                 }
             }
             if (d.DeviceMonitor is ICoreClockSet)
@@ -843,7 +819,8 @@ namespace NHMCore.Nhmws.V4
                     var lims = ccLimDelta.CoreClockRangeDelta;
                     if (lims.ok)
                     {
-                        limit.limits.Add(new Limit { Name = "Core clock delta", Unit = "MHz", Def = lims.def, Range = (lims.min, lims.max) });
+                        int defVal = CheckOrCorrectDefaultValue(lims.min, lims.max, lims.def);
+                        limit.limits.Add(new Limit { Name = "Core clock delta", Unit = "MHz", Def = defVal, Range = (lims.min, lims.max) });
                     }
                 }
                 if (d.DeviceMonitor is ICoreClockRange ccLim && !d.IsNvidiaAndSub2KSeries())
@@ -851,8 +828,10 @@ namespace NHMCore.Nhmws.V4
                     var lims = ccLim.CoreClockRange;
                     if (lims.ok)
                     {
-                        if(lims.max - lims.min <= 20) limit.limits.Add(new Limit { Name = "Core clock", Unit = "MHz", Def = lims.def, Range = (300, 3000) });//INTERFACE ERROR, limits could not be retrieved
-                        else limit.limits.Add(new Limit { Name = "Core clock", Unit = "MHz", Def = lims.def, Range = (lims.min, lims.max) });
+                        var range = AreLimitsWrong(lims.min, lims.max) ? (300, 3000) : (lims.min, lims.max); //default, if range fails
+                        int defVal = CheckOrCorrectDefaultValue(lims.min, lims.max, lims.def);
+                        if (AreLimitsWrong(lims.min, lims.max)) AvailableNotifications.CreateCoreClockRangeGetFailed(d.BaseDevice.ID, d.FullName);
+                        limit.limits.Add(new Limit { Name = "Core clock", Unit = "MHz", Def = defVal, Range = range });
                     }
                 }
             }
@@ -863,7 +842,8 @@ namespace NHMCore.Nhmws.V4
                     var lims = mcLimDelta.MemoryClockRangeDelta;
                     if (lims.ok)
                     {
-                        limit.limits.Add(new Limit { Name = "Memory clock delta", Unit = "MHz", Def = lims.def, Range = (lims.min, lims.max) });
+                        int defVal = CheckOrCorrectDefaultValue(lims.min, lims.max, lims.def);
+                        limit.limits.Add(new Limit { Name = "Memory clock delta", Unit = "MHz", Def = defVal, Range = (lims.min, lims.max) });
                     }
                 }
                 if (d.DeviceMonitor is IMemoryClockRange mcLim && !d.IsNvidiaAndSub2KSeries())
@@ -871,8 +851,10 @@ namespace NHMCore.Nhmws.V4
                     var lims = mcLim.MemoryClockRange;
                     if (lims.ok)
                     {
-                        if(lims.min - lims.min <= 20) limit.limits.Add(new Limit { Name = "Memory clock", Unit = "MHz", Def = lims.def, Range = (300, 10000) });//INTERFACE ERROR, limits could not be retrieved
-                        else limit.limits.Add(new Limit { Name = "Memory clock", Unit = "MHz", Def = lims.def, Range = (lims.min, lims.max) });
+                        var range = AreLimitsWrong(lims.min, lims.max) ? (300, 10000) : (lims.min, lims.max); //default, if range fails
+                        int defVal = CheckOrCorrectDefaultValue(lims.min, lims.max, lims.def);
+                        if (AreLimitsWrong(lims.min, lims.max)) AvailableNotifications.CreateMemClockRangeGetFailed(d.BaseDevice.ID, d.FullName);
+                        limit.limits.Add(new Limit { Name = "Memory clock", Unit = "MHz", Def = defVal, Range = range });
                     }
                 }
             }
@@ -882,6 +864,7 @@ namespace NHMCore.Nhmws.V4
                 if (lims.ok && d.DeviceMonitor is ICoreVoltage cvGet)
                 {
                     var def = d.DeviceType == DeviceType.INTEL ? lims.def : cvGet.CoreVoltage;
+                    def = CheckOrCorrectDefaultValue(lims.min, lims.max, def);
                     limit.limits.Add(new Limit { Name = "Core Voltage", Unit = "mV", Def = def, Range = (lims.min, lims.max) });
                 }
             }

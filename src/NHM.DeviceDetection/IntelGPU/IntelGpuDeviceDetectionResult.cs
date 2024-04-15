@@ -18,6 +18,7 @@ namespace NHM.DeviceDetection.IntelGPU
             public string DeviceName { get; set; }
             public string DriverVersion { get; set; }
             public ulong DeviceMemory { get; set; }
+            public bool IsIntegrated { get; set; }
         }
 
         public List<Device> IgclDevices { get; set; }
