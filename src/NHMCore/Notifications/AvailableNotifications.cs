@@ -354,5 +354,19 @@ namespace NHMCore.Notifications
             notification.Action = AvailableActions.ActionRunAsAdmin();
             NotificationsManager.Instance.AddNotificationToList(notification);
         }
+
+        public static void CreateMemClockRangeGetFailed(int busID, string gpuName)
+        {
+            var notification = new Notification(NotificationsType.Warning, NotificationsGroup.MemClockRangeGetFail, Tr("NHM failed to retrieve memory clock range"), Tr($"NHM failed to retrieve memory clock range. Default range will be used on [{busID}]:{gpuName}."));
+            notification.NotificationUUID = Enum.GetName(typeof(NotificationsGroup), NotificationsGroup.MemClockRangeGetFail);
+            NotificationsManager.Instance.AddNotificationToList(notification);
+        }
+
+        public static void CreateCoreClockRangeGetFailed(int busID, string gpuName)
+        {
+            var notification = new Notification(NotificationsType.Warning, NotificationsGroup.CoreClockRangeGetFail, Tr("NHM failed to retrieve core clock range"), Tr($"NHM failed to retrieve core clock range. Default range will be used on [{busID}]:{gpuName}."));
+            notification.NotificationUUID = Enum.GetName(typeof(NotificationsGroup), NotificationsGroup.CoreClockRangeGetFail);
+            NotificationsManager.Instance.AddNotificationToList(notification);
+        }
     }
 }

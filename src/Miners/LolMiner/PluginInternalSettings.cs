@@ -60,12 +60,20 @@ namespace LolMiner
                     $"--algo NEXA --pool {_urlPort} --user {_username} --tls 0 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
                 },
                 {
-                    $"{AlgorithmType.IronFish}",
-                    $"--algo IRONFISH --pool {_urlPort} --user {_username} --tls 0 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
-                },
-                {
                     $"{AlgorithmType.KarlsenHash}",
                     $"--algo KARLSEN --pool {_urlPort} --user {_username} --tls 0 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
+                },
+                {
+                    $"{AlgorithmType.Alephium}",
+                    $"--algo ALEPH --pool {_urlPort} --user {_username} --tls 0 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
+                },
+                {
+                    $"{AlgorithmType.FishHash}",
+                    $"--algo FISHHASH --pool {_urlPort} --user {_username} --tls 0 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
+                },
+                {
+                    $"{AlgorithmType.PyrinHash}",
+                    $"--algo PYRIN --pool {_urlPort} --user {_username} --tls 0 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
                 }
             },
             AlgorithmCommandLineSSL = new Dictionary<string, string>
@@ -111,12 +119,20 @@ namespace LolMiner
                     $"--algo NEXA --pool {_url}:443 --user {_username} --tls 1 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
                 },
                 {
-                    $"{AlgorithmType.IronFish}",
-                    $"--algo IRONFISH --pool {_url}:443 --user {_username} --tls 1 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
-                },
-                {
                     $"{AlgorithmType.KarlsenHash}",
                     $"--algo KARLSEN --pool {_url}:443 --user {_username} --tls 1 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
+                },
+                {
+                    $"{AlgorithmType.Alephium}",
+                    $"--algo ALEPH --pool {_url}:443 --user {_username} --tls 1 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
+                },
+                {
+                    $"{AlgorithmType.FishHash}",
+                    $"--algo FISHHASH --pool {_url}:443 --user {_username} --tls 1 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
+                },
+                {
+                    $"{AlgorithmType.PyrinHash}",
+                    $"--algo PYRIN --pool {_url}:443 --user {_username} --tls 1 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
                 }
             }
         };
