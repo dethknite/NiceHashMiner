@@ -145,7 +145,7 @@ namespace NHM.Common.Enums
         //[Obsolete("UNUSED Algorithm")]
         KarlsenHash = 65,
         //[Obsolete("UNUSED Algorithm")]
-        Alephium = 66,
+        Alephium = 66, //24
         //[Obsolete("UNUSED Algorithm")]
         FishHash = 67,
         //[Obsolete("UNUSED Algorithm")]
