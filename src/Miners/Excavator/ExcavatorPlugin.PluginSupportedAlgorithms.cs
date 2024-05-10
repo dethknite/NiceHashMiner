@@ -18,12 +18,13 @@ namespace Excavator
                     {
                         new SAS(AlgorithmType.DaggerHashimoto),
                         new SAS(AlgorithmType.EtcHash),
-                        new SAS(AlgorithmType.Autolykos) { Enabled = false },
-                        new SAS(AlgorithmType.KAWPOW) { Enabled = false, NonDefaultRAMLimit = (4UL << 30) },
+                        new SAS(AlgorithmType.Autolykos) { Enabled = true },
+                        new SAS(AlgorithmType.KAWPOW) { Enabled = true, NonDefaultRAMLimit = (4UL << 30) },
                         new SAS(AlgorithmType.NeoScrypt),
                         new SAS(AlgorithmType.KHeavyHash),
                         new SAS(AlgorithmType.ZelHash),
-                        new SAS(AlgorithmType.KarlsenHash) { Enabled = true}
+                        new SAS(AlgorithmType.KarlsenHash) { Enabled = true},
+                        new SAS(AlgorithmType.Alephium) { Enabled = true }
                     }
                 },
                 {
@@ -32,12 +33,13 @@ namespace Excavator
                     {
                         new SAS(AlgorithmType.DaggerHashimoto),
                         new SAS(AlgorithmType.EtcHash),
-                        new SAS(AlgorithmType.Autolykos) { Enabled = false },
-                        new SAS(AlgorithmType.KAWPOW) { Enabled = false, NonDefaultRAMLimit =  (4UL << 30) },
+                        new SAS(AlgorithmType.Autolykos) { Enabled = true },
+                        new SAS(AlgorithmType.KAWPOW) { Enabled = true, NonDefaultRAMLimit =  (4UL << 30) },
                         new SAS(AlgorithmType.NeoScrypt),
                         new SAS(AlgorithmType.KHeavyHash),
                         new SAS(AlgorithmType.ZelHash),
-                        new SAS(AlgorithmType.KarlsenHash) { Enabled = true}
+                        new SAS(AlgorithmType.KarlsenHash) { Enabled = true},
+                        new SAS(AlgorithmType.Alephium) { Enabled = true }
                     }
                 },
                 {
@@ -58,7 +60,8 @@ namespace Excavator
                 { AlgorithmType.RandomXmonero, "randomx" },
                 { AlgorithmType.KHeavyHash, "kheavyhash" },
                 { AlgorithmType.ZelHash, "zelhash" },
-                { AlgorithmType.KarlsenHash, "karlsenhash" }
+                { AlgorithmType.KarlsenHash, "karlsenhash" },
+                { AlgorithmType.Alephium, "alephium" }
             }
         };
     }
