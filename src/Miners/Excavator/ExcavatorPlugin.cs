@@ -27,11 +27,11 @@ namespace Excavator
 
             MinersBinsUrlsSettings = new MinersBinsUrlsSettings
             {
-                BinVersion = "v1.8.9.0",
-                ExePath = new List<string> { "NHQM_v0.6.9.0", "excavator.exe" },
+                BinVersion = "v1.8.10.0",
+                ExePath = new List<string> { "NHQM_v0.6.10.0", "excavator.exe" },
                 Urls = new List<string>
                 {
-                    "https://github.com/nicehash/NiceHashQuickMiner/releases/download/v0.6.9.0/NHQM_v0.6.9.0.zip"
+                    "https://github.com/nicehash/NiceHashQuickMiner/releases/download/v0.6.10.0/NHQM_v0.6.10.0.zip"
                 }
             };
             PluginMetaInfo = new PluginMetaInfo

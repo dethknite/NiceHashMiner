@@ -16,30 +16,32 @@ namespace Excavator
                     DeviceType.NVIDIA,
                     new List<SAS>
                     {
-                        new SAS(AlgorithmType.DaggerHashimoto),
-                        new SAS(AlgorithmType.EtcHash),
-                        new SAS(AlgorithmType.Autolykos) { Enabled = true },
+                        new SAS(AlgorithmType.DaggerHashimoto) { Enabled = true},
+                        new SAS(AlgorithmType.EtcHash) { Enabled = true},
+                        new SAS(AlgorithmType.Autolykos) { Enabled = true},
                         new SAS(AlgorithmType.KAWPOW) { Enabled = true, NonDefaultRAMLimit = (4UL << 30) },
-                        new SAS(AlgorithmType.NeoScrypt),
-                        new SAS(AlgorithmType.KHeavyHash),
-                        new SAS(AlgorithmType.ZelHash),
+                        new SAS(AlgorithmType.NeoScrypt) { Enabled = true},
+                        new SAS(AlgorithmType.KHeavyHash) { Enabled = true},
+                        new SAS(AlgorithmType.ZelHash) { Enabled = true},
                         new SAS(AlgorithmType.KarlsenHash) { Enabled = true},
-                        new SAS(AlgorithmType.Alephium) { Enabled = true }
+                        new SAS(AlgorithmType.Alephium) { Enabled = true },
+                        new SAS(AlgorithmType.FishHash) { Enabled = true},
                     }
                 },
                 {
                     DeviceType.AMD,
                     new List<SAS>
                     {
-                        new SAS(AlgorithmType.DaggerHashimoto),
-                        new SAS(AlgorithmType.EtcHash),
+                        new SAS(AlgorithmType.DaggerHashimoto) { Enabled = true },
+                        new SAS(AlgorithmType.EtcHash) { Enabled = true },
                         new SAS(AlgorithmType.Autolykos) { Enabled = true },
                         new SAS(AlgorithmType.KAWPOW) { Enabled = true, NonDefaultRAMLimit =  (4UL << 30) },
-                        new SAS(AlgorithmType.NeoScrypt),
-                        new SAS(AlgorithmType.KHeavyHash),
-                        new SAS(AlgorithmType.ZelHash),
+                        new SAS(AlgorithmType.NeoScrypt) { Enabled = true },
+                        new SAS(AlgorithmType.KHeavyHash) { Enabled = true },
+                        new SAS(AlgorithmType.ZelHash) { Enabled = true },
                         new SAS(AlgorithmType.KarlsenHash) { Enabled = true},
-                        new SAS(AlgorithmType.Alephium) { Enabled = true }
+                        new SAS(AlgorithmType.Alephium) { Enabled = true },
+                        new SAS(AlgorithmType.FishHash) { Enabled = true }
                     }
                 },
                 {
@@ -61,7 +63,8 @@ namespace Excavator
                 { AlgorithmType.KHeavyHash, "kheavyhash" },
                 { AlgorithmType.ZelHash, "zelhash" },
                 { AlgorithmType.KarlsenHash, "karlsenhash" },
-                { AlgorithmType.Alephium, "alephium" }
+                { AlgorithmType.Alephium, "alephium" },
+                { AlgorithmType.FishHash, "fishhash" }
             }
         };
     }
