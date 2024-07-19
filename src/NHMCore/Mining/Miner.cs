@@ -330,6 +330,7 @@ namespace NHMCore.Mining
                         }
                         if (restartCount >= maxRestartCount)
                         {
+                            Logger.Error(MinerTag(), $"Restart count of {MinerDeviceName} - {MinerTag()} exceeded {maxRestartCount}, algorithm unstable");
                             var firstAlgo = _algos.FirstOrDefault();
                             Random randWait = new Random();
                             firstAlgo.IgnoreUntil = DateTime.UtcNow.AddMinutes(randWait.Next(20, 30));
