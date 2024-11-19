@@ -1,6 +1,7 @@
 ﻿using NHM.Common.Enums;
 
 namespace NHM.Common
+{
     public static class DemoUser
     {
         public static string BTC =>
