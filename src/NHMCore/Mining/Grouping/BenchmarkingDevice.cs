@@ -62,8 +62,7 @@ namespace NHMCore.Mining.Grouping
                 miner = plugin.CreateMiner();
 
                 miner.InitMiningPairs(miningPairs);
-                // fill service since the benchmark might be online. DemoUser.BTC must be used
-                miner.InitMiningLocationAndUsername("auto", DemoUser.BTC);
+                miner.InitMiningLocationAndUsername("auto", CredentialsSettings.Instance.BitcoinAddress);
                 powerHelper.Start();
                 algo.ComputeDevice.State = DeviceState.Benchmarking;
                 GPUProfileManager.Instance.Start(miningPairs, stop);
