@@ -38,10 +38,6 @@ namespace MP.GMiner
                     $"-a autolykos2 -s stratum+tcp://{_urlPort} -u {_username} --api 127.0.0.1:{_apiPort} -d {_devices} --watchdog 0 {_extraLaunchParameters}"
                 },
                 {
-                    $"{AlgorithmType.KHeavyHash}",
-                    $"-a kheavyhash -s stratum+tcp://{_urlPort} -u {_username} --api 127.0.0.1:{_apiPort} -d {_devices} --watchdog 0 {_extraLaunchParameters}"
-                },
-                {
                     $"{AlgorithmType.BeamV3}",
                     $"-a beamhash -s stratum+tcp://{_urlPort} -u {_username} --api 127.0.0.1:{_apiPort} -d {_devices} --watchdog 0 {_extraLaunchParameters}"
                 },
@@ -54,10 +50,6 @@ namespace MP.GMiner
                     $"-a equihash125_4 -s stratum+tcp://{_urlPort} -u {_username} --api 127.0.0.1:{_apiPort} -d {_devices} --watchdog 0 {_extraLaunchParameters}"
                 },
                 {
-                    $"{AlgorithmType.GrinCuckatoo32}",
-                    $"-a cuckatoo32 -s stratum+tcp://{_urlPort} -u {_username} --api 127.0.0.1:{_apiPort} -d {_devices} --watchdog 0 {_extraLaunchParameters}"
-                },
-                {
                     $"{AlgorithmType.ZHash}",
                     $"-a equihash144_5 --pers auto -s stratum+tcp://{_urlPort} -u {_username} --api 127.0.0.1:{_apiPort} -d {_devices} --watchdog 0 {_extraLaunchParameters}"
                 },
@@ -65,10 +57,6 @@ namespace MP.GMiner
                     $"{AlgorithmType.Octopus}",
                     $"-a octopus -s stratum+tcp://{_urlPort} -u {_username} --api 127.0.0.1:{_apiPort} -d {_devices} --watchdog 0 {_extraLaunchParameters}"
                 },
-                {
-                    $"{AlgorithmType.KarlsenHash}",
-                    $"-a karlsen -s stratum+tcp://{_urlPort} -u {_username} --api 127.0.0.1:{_apiPort} -d {_devices} --watchdog 0 {_extraLaunchParameters}"
-                }
             },
             AlgorithmCommandLineSSL = new Dictionary<string, string>
             {
@@ -89,10 +77,6 @@ namespace MP.GMiner
                     $"-a autolykos2 -s stratum+ssl://{_url}:443 -u {_username} --api 127.0.0.1:{_apiPort} -d {_devices} --watchdog 0 {_extraLaunchParameters}"
                 },
                 {
-                    $"{AlgorithmType.KHeavyHash}",
-                    $"-a kheavyhash -s stratum+ssl://{_url}:443 -u {_username} --api 127.0.0.1:{_apiPort} -d {_devices} --watchdog 0 {_extraLaunchParameters}"
-                },
-                {
                     $"{AlgorithmType.BeamV3}",
                     $"-a beamhash -s stratum+ssl://{_url}:443 -u {_username} --api 127.0.0.1:{_apiPort} -d {_devices} --watchdog 0 {_extraLaunchParameters}"
                 },
@@ -105,10 +89,6 @@ namespace MP.GMiner
                     $"-a equihash125_4 -s stratum+ssl://{_url}:443 -u {_username} --api 127.0.0.1:{_apiPort} -d {_devices} --watchdog 0 {_extraLaunchParameters}"
                 },
                 {
-                    $"{AlgorithmType.GrinCuckatoo32}",
-                    $"-a cuckatoo32 -s stratum+ssl://{_url}:443 -u {_username} --api 127.0.0.1:{_apiPort} -d {_devices} --watchdog 0 {_extraLaunchParameters}"
-                },
-                {
                     $"{AlgorithmType.ZHash}",
                     $"-a equihash144_5 --pers auto -s stratum+ssl://{_url}:443 -u {_username} --api 127.0.0.1:{_apiPort} -d {_devices} --watchdog 0 {_extraLaunchParameters}"
                 },
@@ -116,10 +96,6 @@ namespace MP.GMiner
                     $"{AlgorithmType.Octopus}",
                     $"-a octopus -s stratum+ssl://{_url}:443 -u {_username} --api 127.0.0.1:{_apiPort} -d {_devices} --watchdog 0 {_extraLaunchParameters}"
                 },
-                {
-                    $"{AlgorithmType.KarlsenHash}",
-                    $"-a karlsen -s stratum+ssl://{_url}:443 -u {_username} --api 127.0.0.1:{_apiPort} -d {_devices} --watchdog 0 {_extraLaunchParameters}"
-                }
             }
         };
 

@@ -30,13 +30,10 @@ namespace MP.GMiner
                         new SAS(AlgorithmType.EtcHash) {NonDefaultRAMLimit =  (4UL << 29) + (5UL << 28) + (1UL << 26), Enabled = false },
                         new SAS(AlgorithmType.KAWPOW) { NonDefaultRAMLimit =  (4UL << 30)  },
                         new SAS(AlgorithmType.Autolykos),
-                        new SAS(AlgorithmType.KHeavyHash) { NonDefaultRAMLimit = (2UL << 29), Enabled = false },
                         new SAS(AlgorithmType.CuckooCycle){Enabled = false},
                         new SAS(AlgorithmType.ZelHash){Enabled = false},
-                        new SAS(AlgorithmType.GrinCuckatoo32){Enabled = false},
                         new SAS(AlgorithmType.ZHash){Enabled = false},
                         new SAS(AlgorithmType.Octopus) {NonDefaultRAMLimit = (5UL << 30) + (4UL << 29)},
-                        new SAS(AlgorithmType.KarlsenHash) {Enabled = false,  NonDefaultRAMLimit = (2UL << 29)},
                     }
                 },
                 {
@@ -47,13 +44,10 @@ namespace MP.GMiner
                         new SAS(AlgorithmType.EtcHash) {NonDefaultRAMLimit =  (4UL << 29) + (5UL << 28) + (1UL << 26), Enabled = false },
                         new SAS(AlgorithmType.KAWPOW) { NonDefaultRAMLimit =  (4UL << 30)  },
                         new SAS(AlgorithmType.Autolykos),
-                        new SAS(AlgorithmType.KHeavyHash) {Enabled = false},
                         new SAS(AlgorithmType.CuckooCycle){Enabled = false},
                         new SAS(AlgorithmType.ZelHash){Enabled = false},
-                        new SAS(AlgorithmType.GrinCuckatoo32){Enabled = false},
                         new SAS(AlgorithmType.ZHash){Enabled = false},
                         new SAS(AlgorithmType.Octopus) {NonDefaultRAMLimit = (5UL << 30) + (4UL << 29)},
-                        //new SAS(AlgorithmType.KarlsenHash) {Enabled = false,  NonDefaultRAMLimit = (2UL << 29)},
                     }
                 }
             }

@@ -27,7 +27,6 @@ namespace FakePlugin
                         new SAS(AlgorithmType.BeamV3),
                         new SAS(AlgorithmType.KAWPOW),
                         new SAS(AlgorithmType.DaggerHashimoto, AlgorithmType.ZHash),
-                        new SAS(AlgorithmType.GrinCuckatoo32),
                     }
                 },
                 {
@@ -44,7 +43,6 @@ namespace FakePlugin
                     new List<SAS>
                     {
                         new SAS(AlgorithmType.RandomXmonero),
-                        new SAS(AlgorithmType.Lyra2REv3),
                         new SAS(AlgorithmType.KAWPOW),
                     }
                 },
