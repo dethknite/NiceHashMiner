@@ -3,7 +3,6 @@ using Example;
 using FakePlugin;
 using LolMiner;
 using NanoMiner;
-using NBMiner;
 using Newtonsoft.Json;
 using NHM.Common;
 using NHM.Common.Configs;
@@ -48,9 +47,6 @@ namespace NHMCore.Mining.Plugins
 #endif
 
 // real miners
-#if INTEGRATE_NBMiner_PLUGIN
-                new NBMinerPlugin(),
-#endif
 #if INTEGRATE_NanoMiner_PLUGIN
                 new NanoMinerPlugin(),
 #endif
@@ -59,7 +55,6 @@ namespace NHMCore.Mining.Plugins
 #endif
 
 #if INTEGRATE_ALL_PLUGINS
-                new NBMinerPlugin(),
                 new NanoMinerPlugin(),
                 new LolMinerPlugin(),
 #endif

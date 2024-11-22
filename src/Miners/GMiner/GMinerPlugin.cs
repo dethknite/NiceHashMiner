@@ -45,7 +45,7 @@ namespace MP.GMiner
 
         public override string Name => "GMiner";
 
-        public override Version Version => new Version(23, 2);
+        public override Version Version => new Version(24, 0);
 
 
         public override string Author => "info@nicehash.com";
