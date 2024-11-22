@@ -45,7 +45,7 @@ namespace MP.GMiner
 
         public override string Name => "GMiner";
 
-        public override Version Version => new Version(23, 1);
+        public override Version Version => new Version(23, 2);
 
 
         public override string Author => "info@nicehash.com";
@@ -82,7 +82,6 @@ namespace MP.GMiner
             {
                 _mappedIDs[gpu.UUID] = minerDeviceId;
                 var algorithms = GetSupportedAlgorithmsForDevice(gpu);
-                if (gpu is CUDADevice cuda && cuda.SM_major >= 8) algorithms = algorithms.Where(a => a.FirstAlgorithmType != AlgorithmType.GrinCuckatoo32).ToList();
                 if (algorithms.Count > 0) supported.Add(gpu, algorithms);
             }
 

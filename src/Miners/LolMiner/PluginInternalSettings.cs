@@ -24,10 +24,6 @@ namespace LolMiner
                     $"--coin AUTO144_5 --pool {_urlPort} --user {_username} --tls 0 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
                 },
                 {
-                    $"{AlgorithmType.GrinCuckatoo32}",
-                    $"--algo C32 --pool {_urlPort} --user {_username} --tls 0 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
-                },
-                {
                     $"{AlgorithmType.BeamV3}",
                     $"--algo BEAM-III --pool {_urlPort} --user {_username} --tls 0 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
                 },
@@ -48,20 +44,12 @@ namespace LolMiner
                     $"--algo ETCHASH --pool {_urlPort} --user {_username} --tls 0 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters} --ethstratum ETHV1"
                 },
                 {
-                    $"{AlgorithmType.KHeavyHash}",
-                    $"--algo KASPA --pool {_urlPort} --user {_username} --tls 0 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
-                },
-                {
                     $"{AlgorithmType.CuckooCycle}",
                     $"--algo C29AE --pool {_urlPort} --user {_username} --tls 0 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
                 },
                 {
                     $"{AlgorithmType.NexaPow}",
                     $"--algo NEXA --pool {_urlPort} --user {_username} --tls 0 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
-                },
-                {
-                    $"{AlgorithmType.KarlsenHash}",
-                    $"--algo KARLSEN --pool {_urlPort} --user {_username} --tls 0 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
                 },
                 {
                     $"{AlgorithmType.Alephium}",
@@ -71,20 +59,12 @@ namespace LolMiner
                     $"{AlgorithmType.FishHash}",
                     $"--algo FISHHASH --pool {_urlPort} --user {_username} --tls 0 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
                 },
-                {
-                    $"{AlgorithmType.PyrinHash}",
-                    $"--algo PYRIN --pool {_urlPort} --user {_username} --tls 0 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
-                }
             },
             AlgorithmCommandLineSSL = new Dictionary<string, string>
             {
                 {
                     $"{AlgorithmType.ZHash}",
                     $"--coin AUTO144_5 --pool {_url}:443 --user {_username} --tls 1 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
-                },
-                {
-                    $"{AlgorithmType.GrinCuckatoo32}",
-                    $"--algo C32 --pool {_url}:443 --user {_username} --tls 1 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
                 },
                 {
                     $"{AlgorithmType.BeamV3}",
@@ -107,20 +87,12 @@ namespace LolMiner
                     $"--algo ETCHASH --pool {_url}:443 --user {_username} --tls 1 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters} --ethstratum ETHV1"
                 },
                 {
-                    $"{AlgorithmType.KHeavyHash}",
-                    $"--algo KASPA --pool {_url}:443 --user {_username} --tls 1 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
-                },
-                {
                     $"{AlgorithmType.CuckooCycle}",
                     $"--algo C29AE --pool {_url}:443 --user {_username} --tls 1 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
                 },
                 {
                     $"{AlgorithmType.NexaPow}",
                     $"--algo NEXA --pool {_url}:443 --user {_username} --tls 1 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
-                },
-                {
-                    $"{AlgorithmType.KarlsenHash}",
-                    $"--algo KARLSEN --pool {_url}:443 --user {_username} --tls 1 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
                 },
                 {
                     $"{AlgorithmType.Alephium}",
@@ -130,10 +102,6 @@ namespace LolMiner
                     $"{AlgorithmType.FishHash}",
                     $"--algo FISHHASH --pool {_url}:443 --user {_username} --tls 1 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
                 },
-                {
-                    $"{AlgorithmType.PyrinHash}",
-                    $"--algo PYRIN --pool {_url}:443 --user {_username} --tls 1 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
-                }
             }
         };
 

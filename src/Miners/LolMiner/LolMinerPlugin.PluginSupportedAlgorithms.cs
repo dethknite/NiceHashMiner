@@ -31,47 +31,38 @@ namespace LolMiner
                     DeviceType.NVIDIA,
                     new List<SAS>
                     {
-                        new SAS(AlgorithmType.GrinCuckatoo32),
                         new SAS(AlgorithmType.CuckooCycle),
                         new SAS(AlgorithmType.ZHash),
                         new SAS(AlgorithmType.BeamV3),
                         new SAS(AlgorithmType.DaggerHashimoto) { Enabled = false },
                         new SAS(AlgorithmType.EtcHash){NonDefaultRAMLimit =  (4UL << 29) + (5UL << 28) + (1UL << 26), Enabled = false },
                         new SAS(AlgorithmType.ZelHash),
-                        new SAS(AlgorithmType.KHeavyHash),
                         new SAS(AlgorithmType.Autolykos) { Enabled = false },
                         new SAS(AlgorithmType.NexaPow),
-                        new SAS(AlgorithmType.KarlsenHash) { Enabled = true },
                         new SAS(AlgorithmType.Alephium) { Enabled = false },
                         new SAS(AlgorithmType.FishHash) { Enabled = true },
-                        new SAS(AlgorithmType.PyrinHash) { Enabled = true },   
                     }
                 },
                 {
                     DeviceType.AMD,
                     new List<SAS>
                     {
-                        new SAS(AlgorithmType.GrinCuckatoo32),
                         new SAS(AlgorithmType.CuckooCycle),
                         new SAS(AlgorithmType.ZHash),
                         new SAS(AlgorithmType.BeamV3) { NonDefaultRAMLimit = AMD_3GBMemory },
                         new SAS(AlgorithmType.DaggerHashimoto) { Enabled = false },
                         new SAS(AlgorithmType.EtcHash) {NonDefaultRAMLimit =  (4UL << 29) + (5UL << 28) + (1UL << 26), Enabled = false },
                         new SAS(AlgorithmType.ZelHash),
-                        new SAS(AlgorithmType.KHeavyHash),
                         new SAS(AlgorithmType.Autolykos) { Enabled = false },
                         new SAS(AlgorithmType.NexaPow),
-                        new SAS(AlgorithmType.KarlsenHash) { Enabled = true },
                         new SAS(AlgorithmType.Alephium) { Enabled = false },
                         new SAS(AlgorithmType.FishHash) { Enabled = true },
-                        new SAS(AlgorithmType.PyrinHash) { Enabled = true },
                     }
                 },
                 {
                     DeviceType.INTEL,
                     new List<SAS>
                     {
-                        new SAS(AlgorithmType.KHeavyHash),
                         new SAS(AlgorithmType.BeamV3),
                         new SAS(AlgorithmType.Autolykos),
                         new SAS(AlgorithmType.ZelHash),
