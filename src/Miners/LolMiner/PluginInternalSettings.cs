@@ -59,6 +59,10 @@ namespace LolMiner
                     $"{AlgorithmType.FishHash}",
                     $"--algo FISHHASH --pool {_urlPort} --user {_username} --tls 0 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
                 },
+                {
+                    $"{AlgorithmType.PyrinHash}",
+                    $"--algo PYRIN --pool {_urlPort} --user {_username} --tls 0 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
+                }
             },
             AlgorithmCommandLineSSL = new Dictionary<string, string>
             {
@@ -102,6 +106,10 @@ namespace LolMiner
                     $"{AlgorithmType.FishHash}",
                     $"--algo FISHHASH --pool {_url}:443 --user {_username} --tls 1 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
                 },
+                {
+                    $"{AlgorithmType.PyrinHash}",
+                    $"--algo PYRIN --pool {_url}:443 --user {_username} --tls 1 --apiport {_apiPort} --disablewatchdog 1 --devices {_devices} {_extraLaunchParameters}"
+                }
             }
         };
 
