@@ -24,6 +24,7 @@ namespace Excavator
                         new SAS(AlgorithmType.ZelHash) { Enabled = true},
                         new SAS(AlgorithmType.Alephium) { Enabled = true },
                         new SAS(AlgorithmType.FishHash) { Enabled = true},
+                        new SAS(AlgorithmType.PyrinHash) { Enabled = true},
                     }
                 },
                 {
@@ -37,7 +38,8 @@ namespace Excavator
                         new SAS(AlgorithmType.NeoScrypt) { Enabled = true },
                         new SAS(AlgorithmType.ZelHash) { Enabled = true },
                         new SAS(AlgorithmType.Alephium) { Enabled = true },
-                        new SAS(AlgorithmType.FishHash) { Enabled = true }
+                        new SAS(AlgorithmType.FishHash) { Enabled = true },
+                        new SAS(AlgorithmType.PyrinHash) { Enabled = true },
                     }
                 },
                 {
@@ -58,7 +60,8 @@ namespace Excavator
                 { AlgorithmType.RandomXmonero, "randomx" },
                 { AlgorithmType.ZelHash, "zelhash" },
                 { AlgorithmType.Alephium, "alephium" },
-                { AlgorithmType.FishHash, "fishhash" }
+                { AlgorithmType.FishHash, "fishhash" },
+                { AlgorithmType.PyrinHash, "pyrinhash" }
             }
         };
     }
