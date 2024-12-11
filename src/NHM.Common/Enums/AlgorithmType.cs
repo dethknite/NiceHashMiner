@@ -149,7 +149,10 @@ namespace NHM.Common.Enums
         //[Obsolete("UNUSED Algorithm")]
         FishHash = 67,
         //[Obsolete("UNUSED Algorithm")]
-        PyrinHash = 68
+        PyrinHash = 68,
+        //[Obsolete("UNUSED Algorithm")]
+        XelisHashV2 = 69
+
         #endregion // NiceHashAPI
     }
 

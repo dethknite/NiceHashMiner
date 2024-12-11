@@ -25,6 +25,7 @@ namespace Excavator
                         new SAS(AlgorithmType.Alephium) { Enabled = true },
                         new SAS(AlgorithmType.FishHash) { Enabled = true},
                         new SAS(AlgorithmType.PyrinHash) { Enabled = true},
+                        new SAS(AlgorithmType.XelisHashV2) { Enabled = true}
                     }
                 },
                 {
@@ -40,6 +41,7 @@ namespace Excavator
                         new SAS(AlgorithmType.Alephium) { Enabled = true },
                         new SAS(AlgorithmType.FishHash) { Enabled = true },
                         new SAS(AlgorithmType.PyrinHash) { Enabled = true },
+                        new SAS(AlgorithmType.XelisHashV2) { Enabled = true }
                     }
                 },
                 {
@@ -61,7 +63,8 @@ namespace Excavator
                 { AlgorithmType.ZelHash, "zelhash" },
                 { AlgorithmType.Alephium, "alephium" },
                 { AlgorithmType.FishHash, "fishhash" },
-                { AlgorithmType.PyrinHash, "pyrinhash" }
+                { AlgorithmType.PyrinHash, "pyrinhash" },
+                { AlgorithmType.XelisHashV2, "xelishash" }
             }
         };
     }
